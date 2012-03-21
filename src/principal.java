@@ -174,6 +174,7 @@ double W1,W2,BIAS,U;
         U=Double.parseDouble(u.getText());
         if((X1==0 || X1==1) && (X2==0 || X2==1)){
             JOptionPane.showMessageDialog(null, "aceptado");
+            setU(getU());
         }
         else{
             JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
@@ -199,6 +200,11 @@ double W1,W2,BIAS,U;
     public double getU() {
         return U;
     }
+
+    public void setU(double U) {
+        this.U = getX1()*getW1()+getX2()*getW1()+getBIAS();
+    }
+    
 
     public double getW1() {
         return W1;
