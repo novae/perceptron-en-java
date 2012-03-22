@@ -5,7 +5,8 @@ import javax.swing.JTextField;
 
 public class principal extends javax.swing.JFrame {
 int X1=0,X2=0;
-double W1,W2,BIAS,U;
+double W1,W2,BIAS,U,sumatoria;
+
     
     public principal() {
         initComponents();
@@ -186,7 +187,8 @@ double W1,W2,BIAS,U;
         U=Double.parseDouble(u.getText());
         if((X1==0 || X1==1) && (X2==0 || X2==1)){
             JOptionPane.showMessageDialog(null, "aceptado");
-            setU(getU());
+            System.out.println("val"+setU(getU()) );
+            
         }
         else{
             JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
@@ -203,7 +205,10 @@ double W1,W2,BIAS,U;
     
     
     
-    
+    public int hardlim(int sumatoria){
+        
+    return sumatoria;
+    } 
     
     public double getBIAS() {
         return BIAS;
@@ -211,8 +216,9 @@ double W1,W2,BIAS,U;
     public double getU() {
         return U;
     }
-    public void setU(double U) {
+    public double setU(double U) {
         this.U = getX1()*getW1()+getX2()*getW1()+getBIAS();
+        return U;
     }
     public double getW1() {
         return W1;
@@ -250,6 +256,22 @@ double W1,W2,BIAS,U;
     public void setW2(JTextField w2) {
         this.w2 = w2;
     }
+
+    public void setYR(JTextField YR) {
+        this.YR = YR;
+    }
+    public JTextField getYR() {
+        return YR;
+    }
+
+    public JTextField getYD() {
+        return YD;
+    }
+     public void setYD(JTextField YD) {
+        this.YD = YD;
+    }
+    
+    
 
  
   
