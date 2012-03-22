@@ -1,1 +1,46 @@
-Perceptron
+PERCEPTRON
+
+Fue el primer modelo de Red Neuronal Artificial supervisada. Es la más simple de las Redes Neuronales.
+
+Fue creada por Rosenblatt en 1958 y su éxito inicial se debió a que era capaz de aprender y reconocer patrones
+sencillos. Con el desarrollo del perceptrón, surge el área de las RedesNeuronales Artificiales dentro de la inteligencia
+Artificial. Sin embargo, Marvin Minsky y Seymur Papert escriben el libro "Perceptrons" en el que se hace un análisis del
+Perceptrón mostrando sus falquezas y decae el apoyo dado a la investigación de las Redes Neuronales Artificiales
+durante algunas décadas.
+
+Las principales limitaciones del perceptrón son que sirve únicamente para problemas linealmente separables y que sean de
+dos clases.
+
+Si lo graficáramos, a simple vista podríamos determinar si el roblema es linealmente separable si es que podemos trazar una línea que divida 
+a los dos grupos. En la siguiente "uno.png" se ilustra este concepto.
+
+RESUMIENDO: se puede decir que el perceptrón fue diseñado para tratar con clases linealmente separabels utilizando
+una función discriminante lineal para crear una frontera de decisión.
+
+Por otra parte, el perceptrón es la única red neuronal que tiene un teorema de convergencia el cúal establece que,
+si el problema es linealmente separable, el perceptrón encontrará la solución. Aunque no se sabe cuanto tiempo le 
+llevara encontrar la solución y mucho emnos si la solución encontrada será la óptima, se sabe que se tendrá una solución.
+
+                                    ARQUITECTURA DEL PERCEPTRON
+La imagen "dos.gif" ilustra la aquitectura del perceptrón para patrones con n caracatesitcias:
+
+Como se puede apreciar, el perceptrón está formado por dos capas, una de entrada con un número de nodos 
+determinado y una de salida con un sólo nodo el cuál se encuentra conectado a cada uno de los nodos de la
+capa de entrada mediante una conexión que está valuada con un peso (W1, W2, W3, Wn).
+
+Existe un nodo extra llamado BIAS el cuál no tiene contacto con el exterior y su valor siempre es 1. Cabe hacer la
+aclaración que algunos autores no toman en cuenta la capa de entrda debido a que en ésta no se lleva a cabo
+nungún procesamiento de la información, simplemente sirve como enlace con el exterior de la red neuronal y su
+única tarea es recibir los valores de entrada del exterior y pasárselos al nodo de la capa de salida.
+
+Para la primera capa, tendremos igual número de nodos que número de caracteristicas en los patrones a analizar
+más el nodo del bias, o bien, dicho de otro modo, tendremos igual número de nodos que número de elementos en 
+nuestro vector que representa al patrón más el nodo del bias.
+
+Entonces tendremos en nuestra primera capa dos nodos de entrada más el nodo del bias. Los nodos de la capa de 
+entrada relacionados con las características del patrón, deberán ser alimentados con lso valores respectivos de los
+patrones que se estén usando.
+
+
+
+
