@@ -29,8 +29,8 @@ determinado y una de salida con un sólo nodo el cuál se encuentra conectado a 
 capa de entrada mediante una conexión que está valuada con un peso (W1, W2, W3, Wn).
 
 Existe un nodo extra llamado BIAS el cuál no tiene contacto con el exterior y su valor siempre es 1. Cabe hacer la
-aclaración que algunos autores no toman en cuenta la capa de entrda debido a que en ésta no se lleva a cabo
-nungún procesamiento de la información, simplemente sirve como enlace con el exterior de la red neuronal y su
+aclaración que algunos autores no toman en cuenta la capa de entrada debido a que en ésta no se lleva a cabo
+ningún procesamiento de la información, simplemente sirve como enlace con el exterior de la red neuronal y su
 única tarea es recibir los valores de entrada del exterior y pasárselos al nodo de la capa de salida.
 
 Para la primera capa, tendremos igual número de nodos que número de caracteristicas en los patrones a analizar
@@ -38,8 +38,32 @@ más el nodo del bias, o bien, dicho de otro modo, tendremos igual número de no
 nuestro vector que representa al patrón más el nodo del bias.
 
 Entonces tendremos en nuestra primera capa dos nodos de entrada más el nodo del bias. Los nodos de la capa de 
-entrada relacionados con las características del patrón, deberán ser alimentados con lso valores respectivos de los
+entrada relacionados con las características del patrón, deberán ser alimentados con los valores respectivos de los
 patrones que se estén usando.
+
+                                        ENTRENAMIENTO Y OPERACIÓN DEL PERCEPTRÓN
+El perceptrón es una red supervisada. Esto quiere decir que debe ser entrenada con un conjunto de patrones previamente
+clasificados de manera que, si los clasifica incorrectamente, se pueda corregir el error mediante una regla de aprendizaje.
+En general, para entrenar la red, necesitaremos un conjunto de patrones previamente clasificados llamado muestra de entrenamiento
+y un conjuntro de patrones llamado muestra decontrol con el que se probara el poder de generalizacion de nuestra red.
+Existen varios métodos, no sólo aplicabes a Redes Neuronales sino a cualquier clasificador
+
+El entrenamiento se da en iteraciones; una iteración comienza cuando se le presenta el primer patrón de la muestra de entrenamiento
+y finaliza cuando se le muestra el último patrón de la muestra de entrenamiento, en cada iteración, se presentan uno por uno lo patrones
+de la muestra de entrenamiento a la red (y), si lo clasifica bien, se prosigue con el siguiente patrón pero si lo clasifica mal, se corrigen los
+pesos mediante la regla de aprendizaje y se sigue con el sigueinte patrón utilizando los nuevos pesos.
+
+El entrenamiento concluye cuando pasa una iteración en la que se clasificó correctamente todos los patrones o bien, se alacanza un
+límite de iteraciones previamente definido por nosostros.
+
+Los pesos iniciales son aleatorios y se recomienda que se encuentren en un rango de  -0.5 a 0.5, que no se repitan y que ninguno ea 0.
+
+Ahora bien, en el nodo de la capa de salida e donde se lleva a cabo el procesamiento de la información. Como abemos, cada nodo
+incluyendo el bias, está conectado con el nodo de la capa de salida y su conexión está ponderada con un peso. Lo primero que debe
+hacer el nodo de la capa de salida al recibir es calcular la entrada neta, como e muestra en la figura (tres).
+
+
+
 
 
 
