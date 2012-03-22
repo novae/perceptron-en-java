@@ -29,8 +29,10 @@ double W1,W2,BIAS,U;
         jLabel6 = new javax.swing.JLabel();
         u = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        y = new javax.swing.JTextField();
+        YD = new javax.swing.JTextField();
         Entrenar = new javax.swing.JButton();
+        YR = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,7 +60,7 @@ double W1,W2,BIAS,U;
 
         u.setText("2");
 
-        jLabel7.setText("y");
+        jLabel7.setText("YD");
 
         Entrenar.setText("Entrenar");
         Entrenar.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +68,8 @@ double W1,W2,BIAS,U;
                 EntrenarActionPerformed(evt);
             }
         });
+
+        jLabel8.setText("Y");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,32 +96,36 @@ double W1,W2,BIAS,U;
                     .addComponent(w2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel5))
+                                .addGap(105, 105, 105)
+                                .addComponent(jLabel6))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(105, 105, 105)
-                                        .addComponent(jLabel6))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(94, 94, 94)
-                                        .addComponent(u, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(56, 56, 56)
-                                        .addComponent(jLabel7))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(48, 48, 48)
-                                        .addComponent(y, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(51, Short.MAX_VALUE))
+                                .addGap(94, 94, 94)
+                                .addComponent(u, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addComponent(YR, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(YD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(bias, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                        .addComponent(Entrenar)
-                        .addGap(23, 23, 23))))
+                        .addComponent(Entrenar)))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,11 +154,15 @@ double W1,W2,BIAS,U;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(w2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(YD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(YR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,67 +208,50 @@ double W1,W2,BIAS,U;
     public double getBIAS() {
         return BIAS;
     }
-
     public double getU() {
         return U;
     }
-
     public void setU(double U) {
         this.U = getX1()*getW1()+getX2()*getW1()+getBIAS();
     }
-    
-
     public double getW1() {
         return W1;
     }
-
     public double getW2() {
         return W2;
     }
-
     public int getX1() {
         return X1;
     }
-
     public int getX2() {
         return X2;
     }
-
     public JTextField getBiasTextField() {
         return bias;
     }
-
     public JTextField getUTextField() {
         return u;
     }
-
     public JTextField getW1TextField() {
         return w1;
     }
-
     public JTextField getW2TextField() {
         return w2;
     }
-
     public void setBias(JTextField bias) {
         this.bias = bias;
     }
-
     public void setU(JTextField u) {
         this.u = u;
     }
-
     public void setW1(JTextField w1) {
         this.w1 = w1;
     }
-
     public void setW2(JTextField w2) {
         this.w2 = w2;
     }
 
-    public void setY(JTextField y) {
-        this.y = y;
-    }
+ 
   
     
     
@@ -297,6 +292,8 @@ double W1,W2,BIAS,U;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Entrenar;
+    private javax.swing.JTextField YD;
+    private javax.swing.JTextField YR;
     private javax.swing.JTextField bias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -305,11 +302,11 @@ double W1,W2,BIAS,U;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField u;
     private javax.swing.JTextField w1;
     private javax.swing.JTextField w2;
     private javax.swing.JTextField x1;
     private javax.swing.JTextField x2;
-    private javax.swing.JTextField y;
     // End of variables declaration//GEN-END:variables
 }
