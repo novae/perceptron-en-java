@@ -4,7 +4,7 @@ import javax.swing.JTextField;
 
 
 public class principal extends javax.swing.JFrame {
-int entradaUno=0,entradaDos=0;
+int entradaUno=0,entradaDos=0,yr=0;
 double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria;
 
     
@@ -178,27 +178,24 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria;
 
     private void EntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenarActionPerformed
         try{
-        entradaUno=Integer.parseInt(X1.getText());
-        entradaDos=Integer.parseInt(X2.getText());
-        
-        pesoSinapticoUno=Double.parseDouble(W1.getText());
-        pesoSinapticoDos=Double.parseDouble(W2.getText());
-        bias=Double.parseDouble(BIAS.getText());
-        u=Double.parseDouble(U.getText());
-        
-        if((entradaUno==0 ||entradaUno==1) && (entradaDos==0 || entradaDos==1)){
-            JOptionPane.showMessageDialog(null, "aceptado");
-            
-            
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
-            
-        }
+        getX1();
+        getX2();
+        getW1();
+        getW2();
+        getBIAS();
+        getU();
+        getYR();
+                        if((getX1()==0 ||getX1()==1) && (getX2()==0 || getX2()==1)){
+                                    JOptionPane.showMessageDialog(null, "aceptado");
+                        }
+                        else{
+                                    JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
+                        }
         }
         catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null,"solo se permiten números");
+                    JOptionPane.showMessageDialog(null,"solo se permiten números");
         }
+        
     }//GEN-LAST:event_EntrenarActionPerformed
 
     
@@ -209,7 +206,43 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria;
     public int hardlim(int sumatoria){
         
     return sumatoria;
-    } 
+    }
+
+    public int getX1() {
+        entradaUno=Integer.parseInt(X1.getText());
+        return entradaUno;
+    }
+
+    public int  getX2() {
+        entradaDos=Integer.parseInt(X2.getText());
+        return entradaDos;
+    }
+
+    public double getW1() {
+        pesoSinapticoUno=Double.parseDouble(W1.getText());
+        return pesoSinapticoUno;
+    }
+
+    public double getW2() {
+        pesoSinapticoDos=Double.parseDouble(W2.getText());
+        return pesoSinapticoDos;
+    }
+
+    public double getBIAS() {
+        bias=Double.parseDouble(BIAS.getText());
+        return bias;
+    }
+
+    public double getU() {
+        u=Double.parseDouble(U.getText());
+        return u;
+    }
+
+    public int getYR() {
+        yr=Integer.parseInt(YR.getText());
+        return yr;
+    }
+    
     
     
  
