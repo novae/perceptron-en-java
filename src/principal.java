@@ -178,19 +178,19 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria;
 
     private void EntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenarActionPerformed
         try{
-        getX1();
-        getX2();
-        getW1();
-        getW2();
-        getBIAS();
-        getU();
-        getYR();
+            getX1();
+            getX2();
+            getW1();
+            getW2();
+            getBIAS();
+            getU();
+            getYR();
+            
                         if((getX1()==0 ||getX1()==1) && (getX2()==0 || getX2()==1)){
                                     JOptionPane.showMessageDialog(null, "aceptado");
                         }
-                        else{
-                                    JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
-                        }
+                         JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
+                        
         }
         catch(NumberFormatException e){
                     JOptionPane.showMessageDialog(null,"solo se permiten números");
