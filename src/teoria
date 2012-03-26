@@ -62,6 +62,17 @@ Ahora bien, en el nodo de la capa de salida e donde se lleva a cabo el procesami
 incluyendo el bias, está conectado con el nodo de la capa de salida y su conexión está ponderada con un peso. Lo primero que debe
 hacer el nodo de la capa de salida al recibir es calcular la entrada neta, como e muestra en la figura (tres).
 
+este NET es la suma de las multiplicaciones del valor de salida de los nodos de entrada por su correspondiente peso.
+Por ejemplo, si tuvieramos un patrón de dos características más el valor de salida del bias que es 1:
+
+p1=[2,3,1] y tuvieramos un vector de pesos w=[0.2,0.3,0.4], el NET sería.
+
+NET= (2*0.2)+(3*0.3)+(1*0.4)
+NET= 0.4+0.9+0.4
+NET= 1.7
+
+Una vez calculado el net, se tiene que pasar a una función de decisión que indica si el valor se le asigna a una clase
+o a otra: (imagen cuatro.png).
 
 
 
