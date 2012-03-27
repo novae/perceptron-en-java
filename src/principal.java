@@ -4,8 +4,8 @@ import javax.swing.JTextField;
 
 
 public class principal extends javax.swing.JFrame {
-int entradaUno=0,entradaDos=0,yDeseada=0,yResultante=0,numeroIteraciones=0,error=0;
-double pesoSinapticoW1,pesoSinapticoW2,bias,u;
+int entradaUno=0,entradaDos=0,yDeseada=0,yResultante=0,numeroIteraciones=0,error=0,net=0;
+double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incrementoPesoSinapticoW2,incrementoBias;
 
     
     public principal() {
@@ -179,36 +179,32 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u;
     }// </editor-fold>//GEN-END:initComponents
 
     private void EntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenarActionPerformed
-            /*   getU();
-            getYR();*/
-        try{
+            
+            
+        
             getX1();
             getX2();
             getW1();
             getW2();
-            getBIAS();
+            getBias();
+            getU();
          
             
-                        if((getX1()==0 ||getX1()==1) && (getX2()==0 || getX2()==1)){
-                                    JOptionPane.showMessageDialog(null, "aceptado");
+                        
                                     
                                     net();
-                                    hardlim(valorHardlim);
-                                    setYR(yr);
+                                    hardlim(yResultante);
+                                    setyResultante(yResultante);
                                     error();
+                        
                                     do{
                                         traine();
                                     }
                                     while(error!=0);
                             
                                    
-                        }
-                         JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
-                        
-        }
-        catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null,"solo se permiten números");
-        }
+                    
+     
         
     }//GEN-LAST:event_EntrenarActionPerformed
 
@@ -258,38 +254,63 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u;
         U.setText(getU()+"");
     }
     
-    
-    
     public int getYResultante() {
         yResultante=Integer.parseInt(YR.getText());
         return yResultante;
     }
-
     public void setyResultante(int yResultante) {
         this.yResultante = yResultante;
         YR.setText(getYResultante()+"");
     }
     
-    
-    
     public int getYDeseada() {
-        yd=Integer.parseInt(YD.getText());
-        return yd;
+        yDeseada=Integer.parseInt(YD.getText());
+        return yDeseada;
+    }
+    public void setyDeseada(int yDeseada) {
+        this.yDeseada = yDeseada;
+        YD.setText(getYDeseada()+"");
     }
 
-    public int hardlim(int valor){
-        if(valor<0){
-        yr=0;
+    public double setIncrementoBias(double incrementoBias) {
+        return this.incrementoBias = incrementoBias+getU()*error();
+    }
+    public double setIncrementoPesoSinapticoW1(double incrementoPesoSinapticoW1) {
+        return this.incrementoPesoSinapticoW1 = incrementoPesoSinapticoW1+getU()*error()*getX1();
+    }
+    public double setIncrementoPesoSinapticoW2(double incrementoPesoSinapticoW2) {
+     return   this.incrementoPesoSinapticoW2 = incrementoPesoSinapticoW2+getU()*error()*getX2();
+    }
+    
+    public int hardlim(int yResultante){
+        if(getYResultante()<0){
+        setyResultante(0);
         }
-        yr=1;
-    return yr;
+        setyResultante(1);
+    return yResultante;
     }
     public int net(){
-        valorHardlim=(int)getX1()*(int)getW1()+(int)getX2()*(int)getW2()+(int)getBIAS();
-    return valorHardlim;
+        net=(int)getX1()*(int)getW1()+(int)getX2()*(int)getW2()+(int)getBias();
+    return net;
     }
     public int error(){
-        error=getYD()-yr;
+        error=getYDeseada()-getYResultante();
+    return error;
+    }
+    public int traine(){
+        setIncrementoBias(incrementoBias);
+        setIncrementoPesoSinapticoW1(incrementoPesoSinapticoW1);
+        setIncrementoPesoSinapticoW2(incrementoPesoSinapticoW2);
+        
+        setW1(incrementoPesoSinapticoW1);
+        setW2(incrementoPesoSinapticoW2);
+        setBias(incrementoBias);
+        
+        net();
+        hardlim(yResultante);
+        error();
+        numeroIteraciones+=numeroIteraciones;
+        
     return error;
     }
   
