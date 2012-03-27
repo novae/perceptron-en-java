@@ -212,6 +212,71 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u;
         
     }//GEN-LAST:event_EntrenarActionPerformed
 
+    
+
+    public int getX1() {
+        entradaUno=Integer.parseInt(X1.getText());
+        return entradaUno;
+    }
+    public int  getX2() {
+        entradaDos=Integer.parseInt(X2.getText());
+        return entradaDos;
+    }
+    
+    public double getW1() {
+        pesoSinapticoW1=Double.parseDouble(W1.getText());
+        return pesoSinapticoW1;
+    }
+    public void setW1(double pesoSinapticoW1) {
+        this.pesoSinapticoW1=getW1();
+        W1.setText(pesoSinapticoW1+" ");
+    }
+    public double getW2() {
+        pesoSinapticoW2=Double.parseDouble(W2.getText());
+        return pesoSinapticoW2;
+    }
+    public void setW2(double pesoSinapticoW2) {
+        this.pesoSinapticoW2=getW2();
+        W2.setText(pesoSinapticoW2+" ");
+    }
+    
+    public double getBias() {
+        bias=Double.parseDouble(BIAS.getText());
+        return bias;
+    }
+    public void setBias(double bias) {
+        this.bias = getBias();
+        BIAS.setText(getBias()+"");
+    }
+
+    public double getU() {
+        u=Double.parseDouble(U.getText());
+        return u;
+    }
+    public void setU(double u) {
+        this.u = getU();
+        U.setText(getU()+"");
+    }
+    
+    
+    
+    public int getYResultante() {
+        yResultante=Integer.parseInt(YR.getText());
+        return yResultante;
+    }
+
+    public void setyResultante(int yResultante) {
+        this.yResultante = yResultante;
+        YR.setText(getYResultante()+"");
+    }
+    
+    
+    
+    public int getYDeseada() {
+        yd=Integer.parseInt(YD.getText());
+        return yd;
+    }
+
     public int hardlim(int valor){
         if(valor<0){
         yr=0;
@@ -227,101 +292,8 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u;
         error=getYD()-yr;
     return error;
     }
-    public void traine(){
-    setW1(incrementoW1);
-    setW2(incrementoW2);
-    setBias(incrementoBias);
-    net();
-    hardlim(valorHardlim);
-    setYR(yr);
-    error();
-    Iteracion++;
-    }
-
-    public int getX1() {
-        entradaUno=Integer.parseInt(X1.getText());
-        return entradaUno;
-    }
-    public int  getX2() {
-        entradaDos=Integer.parseInt(X2.getText());
-        return entradaDos;
-    }
-    
-    
-    
-    
-    public double getW1() {
-        pesoSinapticoW1=Double.parseDouble(W1.getText());
-        return pesoSinapticoW1;
-    }
-    public void setW1(double pesoSinapticoW1) {
-        this.pesoSinapticoW1=getW1();
-        W1.setText(pesoSinapticoW1+" ");
-    }
-    
-    public double getW2() {
-        pesoSinapticoW2=Double.parseDouble(W2.getText());
-        return pesoSinapticoW2;
-    }
-    public void setW2(double pesoSinapticoW2) {
-        this.pesoSinapticoW2=getW2();
-        W2.setText(pesoSinapticoW2+" ");
-    }
-    
-    
-    public double getBias() {
-        bias=Double.parseDouble(BIAS.getText());
-        return bias;
-    }
-
-    public void setBias(double bias) {
-        this.bias = bias;
-    }
-    
-    public double getU() {
-        u=Double.parseDouble(U.getText());
-        return u;
-    }
-    public int getYR() {
-        yr=Integer.parseInt(YR.getText());
-        return yr;
-    }
-    public int getYD() {
-        yd=Integer.parseInt(YD.getText());
-        return yd;
-    }
-
-    
-    
-    
-    public double setBias(double incrementoBias){
-        this.incrementoBias=incrementoBias+net()*error();
-        BIAS.setText(incrementoBias+"");
-    return incrementoBias;
-    }
-
-    public void setYR(int yr) {
-        YR.setText(""+yr);
-    }
-    
-    
-    
-    
-    
- 
   
     
-    
-    
-    
-    
-     
-     
-     
-     
-     
-     
-     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
