@@ -193,7 +193,7 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
                         
                                     
                                     net();
-                                    hardlim(yResultante);
+                                    hardlim(net);
                                     setyResultante(yResultante);
                                     error();
                         
@@ -258,9 +258,10 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
         yResultante=Integer.parseInt(YR.getText());
         return yResultante;
     }
-    public void setyResultante(int yResultante) {
+    public int setyResultante(int yResultante) {
         this.yResultante = yResultante;
-        YR.setText(getYResultante()+"");
+        YR.setText(yResultante+"");
+        return yResultante;
     }
     
     public int getYDeseada() {
@@ -282,8 +283,8 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
      return   this.incrementoPesoSinapticoW2 = incrementoPesoSinapticoW2+getU()*error()*getX2();
     }
     
-    public int hardlim(int yResultante){
-        if(getYResultante()<0){
+    public int hardlim(int net){
+        if(net()<0){
         setyResultante(0);
         }
         setyResultante(1);
