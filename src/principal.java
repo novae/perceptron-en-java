@@ -4,8 +4,8 @@ import javax.swing.JTextField;
 
 
 public class principal extends javax.swing.JFrame {
-int entradaUno=0,entradaDos=0,yr=0,error=0,yd=0,valorHardlim=0,Iteracion=0;
-double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria,valor=0,incrementoW2=0,incrementoBias=0,incrementoW1=0;
+int entradaUno=0,entradaDos=0,yDeseada=0,yResultante=0,numeroIteraciones=0,error=0;
+double pesoSinapticoW1,pesoSinapticoW2,bias,u;
 
     
     public principal() {
@@ -49,19 +49,21 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria,valor=0,incrementoW2=0
 
         jLabel4.setText("w2");
 
-        W1.setText("3");
+        W1.setText("1.7");
 
-        W2.setText("3");
+        W2.setText("1.8");
 
         jLabel5.setText("bias");
 
-        BIAS.setText("45");
+        BIAS.setText("2.4");
 
         jLabel6.setText("u");
 
-        U.setText("2");
+        U.setText("0.4");
 
         jLabel7.setText("YD");
+
+        YD.setText("0");
 
         Entrenar.setText("Entrenar");
         Entrenar.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +72,7 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria,valor=0,incrementoW2=0
             }
         });
 
-        jLabel8.setText("Y");
+        jLabel8.setText("YR");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,21 +179,29 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria,valor=0,incrementoW2=0
     }// </editor-fold>//GEN-END:initComponents
 
     private void EntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenarActionPerformed
+            /*   getU();
+            getYR();*/
         try{
             getX1();
             getX2();
             getW1();
             getW2();
             getBIAS();
-            getU();
-            getYR();
+         
             
                         if((getX1()==0 ||getX1()==1) && (getX2()==0 || getX2()==1)){
                                     JOptionPane.showMessageDialog(null, "aceptado");
+                                    
                                     net();
                                     hardlim(valorHardlim);
+                                    setYR(yr);
                                     error();
-                                    
+                                    do{
+                                        traine();
+                                    }
+                                    while(error!=0);
+                            
+                                   
                         }
                          JOptionPane.showMessageDialog(null, "solo se admiten valores en el rango de [0,1] para los campos X1 & X2");
                         
@@ -202,35 +212,28 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria,valor=0,incrementoW2=0
         
     }//GEN-LAST:event_EntrenarActionPerformed
 
-    
-    
-    
-    
-    
     public int hardlim(int valor){
         if(valor<0){
-        valor=0;
+        yr=0;
         }
-        valor=1;
-    return valor;
+        yr=1;
+    return yr;
     }
-    
     public int net(){
         valorHardlim=(int)getX1()*(int)getW1()+(int)getX2()*(int)getW2()+(int)getBIAS();
     return valorHardlim;
     }
-    
     public int error(){
-        error=getYD()-(int)valorHardlim;
+        error=getYD()-yr;
     return error;
     }
-    
     public void traine(){
     setW1(incrementoW1);
     setW2(incrementoW2);
     setBias(incrementoBias);
     net();
     hardlim(valorHardlim);
+    setYR(yr);
     error();
     Iteracion++;
     }
@@ -243,18 +246,38 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria,valor=0,incrementoW2=0
         entradaDos=Integer.parseInt(X2.getText());
         return entradaDos;
     }
+    
+    
+    
+    
     public double getW1() {
-        pesoSinapticoUno=Double.parseDouble(W1.getText());
-        return pesoSinapticoUno;
+        pesoSinapticoW1=Double.parseDouble(W1.getText());
+        return pesoSinapticoW1;
     }
+    public void setW1(double pesoSinapticoW1) {
+        this.pesoSinapticoW1=getW1();
+        W1.setText(pesoSinapticoW1+" ");
+    }
+    
     public double getW2() {
-        pesoSinapticoDos=Double.parseDouble(W2.getText());
-        return pesoSinapticoDos;
+        pesoSinapticoW2=Double.parseDouble(W2.getText());
+        return pesoSinapticoW2;
     }
-    public double getBIAS() {
+    public void setW2(double pesoSinapticoW2) {
+        this.pesoSinapticoW2=getW2();
+        W2.setText(pesoSinapticoW2+" ");
+    }
+    
+    
+    public double getBias() {
         bias=Double.parseDouble(BIAS.getText());
         return bias;
     }
+
+    public void setBias(double bias) {
+        this.bias = bias;
+    }
+    
     public double getU() {
         u=Double.parseDouble(U.getText());
         return u;
@@ -268,22 +291,17 @@ double pesoSinapticoUno,pesoSinapticoDos,bias,u,sumatoria,valor=0,incrementoW2=0
         return yd;
     }
 
-    public double setW1(double incrementoW1) {
-        this.incrementoW1=incrementoW1+net()*error()*getX1();
-        W1.setText(incrementoW1+" ");
-        return incrementoW1;
-    }
-
-    public double setW2(double incrementoW2) {
-        this.incrementoW2=incrementoW2+net()*error()*getX2();
-        W2.setText(incrementoW2+" ");
-        return incrementoW2;
-    }
+    
+    
     
     public double setBias(double incrementoBias){
         this.incrementoBias=incrementoBias+net()*error();
         BIAS.setText(incrementoBias+"");
     return incrementoBias;
+    }
+
+    public void setYR(int yr) {
+        YR.setText(""+yr);
     }
     
     
