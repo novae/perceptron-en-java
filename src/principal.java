@@ -285,10 +285,12 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
     }
     
     public int hardlim(int net){
-        if(net()<0){
+        if(net()<=0){
         setyResultante(0);
         }
+        else{
         setyResultante(1);
+        }
     return yResultante;
     }
     public int net(){
@@ -314,6 +316,7 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
         net();
         hardlim(yResultante);
         error();
+        
         numeroIteraciones+=numeroIteraciones;
         
     return error;
