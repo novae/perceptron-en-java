@@ -4,8 +4,17 @@ import javax.swing.JTextField;
 
 
 public class principal extends javax.swing.JFrame {
-int entradaUno=0,entradaDos=0,yDeseada=0,yResultante=0,numeroIteraciones=0,error=0,net=0;
-double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incrementoPesoSinapticoW2,incrementoBias;
+    
+    
+int     entradaUno=0,
+          entradaDos=0,
+          yDeseada=0,
+          yResultante=0,
+          numeroIteraciones=0,
+          error=0,
+          net=0;
+
+double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incrementoPesoSinapticoW2,incrementoBias,dos;
 
     
     public principal() {
@@ -180,8 +189,6 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
 
     private void EntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenarActionPerformed
             
-            
-        
             getX1();
             getX2();
             getW1();
@@ -189,10 +196,7 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
             getBias();
             getU();
          
-            
-                        
-                                    
-                                    net();
+                                     net();
                                     hardlim(net);
                                     setyResultante(yResultante);
                                     error();
@@ -201,11 +205,7 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
                                         traine();
                                     }
                                     while(error!=0);
-                            
-                                   
-                    
-     
-        
+       
     }//GEN-LAST:event_EntrenarActionPerformed
 
     
@@ -224,15 +224,16 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
         return pesoSinapticoW1;
     }
     public void setW1(double pesoSinapticoW1) {
-        this.pesoSinapticoW1=getW1();
+        this.pesoSinapticoW1=pesoSinapticoW1;
         W1.setText(pesoSinapticoW1+" ");
     }
+    
     public double getW2() {
         pesoSinapticoW2=Double.parseDouble(W2.getText());
         return pesoSinapticoW2;
     }
     public void setW2(double pesoSinapticoW2) {
-        this.pesoSinapticoW2=getW2();
+        this.pesoSinapticoW2=pesoSinapticoW2;
         W2.setText(pesoSinapticoW2+" ");
     }
     
@@ -241,8 +242,8 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
         return bias;
     }
     public void setBias(double bias) {
-        this.bias = getBias();
-        BIAS.setText(getBias()+"");
+        this.bias = bias;
+        BIAS.setText(bias+"");
     }
 
     public double getU() {
@@ -292,6 +293,9 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
     }
     public int net(){
         net=(int)getX1()*(int)getW1()+(int)getX2()*(int)getW2()+(int)getBias();
+        
+        dos=getX1()*getW1()+getX2()*getW2()+getBias();
+        
     return net;
     }
     public int error(){
