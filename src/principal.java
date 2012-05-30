@@ -221,19 +221,17 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
             getW2(); //obtener datos de w2
             getBias(); //obtener datos de bias
             
-            net();
-            setU();
-         
+                    net(); //Calcular suma aritmetica
+                    setU(); //Settear valor resultante a JTextField u
+                    hardlim(net); //Clasificar valor Resultante de net()
+                    setyResultante(yResultante); //settear valor resultante a JtextField YR
+                    error(); //Calcular Error
 
-            hardlim(net);
-            setyResultante(yResultante);
-            error();
+                    do{ //si existe error arrojado por el metodo error(, mandar llamar a traine
+                        traine(); // recalcular pesos y reasignarlos
+                    }
+                    while(error!=0); //hasta que no haya error
 
-            do{
-                traine();
-            }
-            while(error!=0);
-       
     }//GEN-LAST:event_EntrenarActionPerformed
 
     private void X1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_X1FocusGained
@@ -361,20 +359,23 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
     return error;
     }
     public int traine(){
-        setIncrementoBias(incrementoBias);
+        setIncrementoBias(incrementoBias); //utilza como parametro el valor actual de bias para recalcular incremento
         setIncrementoPesoSinapticoW1(incrementoPesoSinapticoW1);
+        //utilza como parametro el valor actual de w1 para recalcular incremento
         setIncrementoPesoSinapticoW2(incrementoPesoSinapticoW2);
-        
+        //utilza como parametro el valor actual de w2 para recalcular incremento
         setW1(incrementoPesoSinapticoW1);
+        //utilza como parametro el valor de retorno del metodo setIncrementoPesoSinapticoW1 para recalcular incremento
         setW2(incrementoPesoSinapticoW2);
+        //utilza como parametro el valor de retorno del metodo setIncrementoPesoSinapticoW2 para recalcular incremento
         setBias(incrementoBias);
-        
+        //utilza como parametro el valor de retorno del metodo setIncrementoBias para recalcular incremento
         net();
         hardlim(yResultante);
         error();
         
         numeroIteraciones+=numeroIteraciones;
-        
+        //contador de numero de iteraciones
     return error;
     }
   
