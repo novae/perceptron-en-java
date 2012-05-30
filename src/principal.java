@@ -215,22 +215,24 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
 
     private void EntrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrenarActionPerformed
             
-            getX1();
-            getX2();
-            getW1();
-            getW2();
-            getBias();
-            getU();
+            getX1(); //obtener datos de x1
+            getX2(); //obtener datos de x2
+            getW1(); //obtener datos de w1
+            getW2(); //obtener datos de w2
+            getBias(); //obtener datos de bias
+            
+            net();
+            setU();
          
-                                     net();
-                                    hardlim(net);
-                                    setyResultante(yResultante);
-                                    error();
-                        
-                                    do{
-                                        traine();
-                                    }
-                                    while(error!=0);
+
+            hardlim(net);
+            setyResultante(yResultante);
+            error();
+
+            do{
+                traine();
+            }
+            while(error!=0);
        
     }//GEN-LAST:event_EntrenarActionPerformed
 
@@ -308,9 +310,8 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
         u=Double.parseDouble(U.getText());
         return u;
     }
-    public void setU(double u) {
-        this.u = getU();
-        U.setText(getU()+"");
+    public void setU() {
+       U.setText(net()+"");
     }
     
     public int getYResultante() {
@@ -353,9 +354,6 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
     }
     public int net(){
         net=(int)getX1()*(int)getW1()+(int)getX2()*(int)getW2()+(int)getBias();
-        
-        dos=getX1()*getW1()+getX2()*getW2()+getBias();
-        
     return net;
     }
     public int error(){
