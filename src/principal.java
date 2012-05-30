@@ -1,11 +1,13 @@
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
 public class principal extends javax.swing.JFrame {
     
-    
+ImageIcon hoverx1,hoverx2,Normalx1,Normalx2,eNormal,eHover,fNoramal,fHover; 
+boolean ban=false;
 int     entradaUno=0,
           entradaDos=0,
           yDeseada=0,
@@ -19,6 +21,14 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
     
     public principal() {
         initComponents();
+        hoverx1=new ImageIcon(getClass().getResource("hoverx1.png"));
+        hoverx2=new ImageIcon(getClass().getResource("hoverx2.png"));
+        Normalx1=new ImageIcon(getClass().getResource("Normalx1.png"));
+        Normalx2=new ImageIcon(getClass().getResource("Normalx2.png"));
+        eHover=new ImageIcon(getClass().getResource("Ehover.png"));
+        eNormal=new ImageIcon(getClass().getResource("eNormal.png"));
+        fNoramal=new ImageIcon(getClass().getResource("fNormal.png"));
+        fHover=new ImageIcon(getClass().getResource("fHover.png"));
     }
 
     
@@ -26,162 +36,178 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        X1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        X2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        W1 = new javax.swing.JTextField();
-        W2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        BIAS = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        U = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        YD = new javax.swing.JTextField();
-        Entrenar = new javax.swing.JButton();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        funcion = new javax.swing.JLabel();
+        xSumatoraiaLabel = new javax.swing.JLabel();
+        x2label = new javax.swing.JLabel();
+        X1LABEL = new javax.swing.JLabel();
         YR = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        Entrenar = new javax.swing.JButton();
+        YD = new javax.swing.JTextField();
+        U = new javax.swing.JTextField();
+        BIAS = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        W2 = new javax.swing.JTextField();
+        W1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        X2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        X1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        fONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(600, 200, 0, 0));
+        setPreferredSize(new java.awt.Dimension(496, 330));
+        setResizable(false);
 
-        jLabel1.setText("x1");
+        funcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fNormal.png"))); // NOI18N
+        funcion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                funcionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                funcionMouseExited(evt);
+            }
+        });
+        funcion.setBounds(370, 130, 50, 50);
+        jLayeredPane1.add(funcion, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        X1.setText("0");
+        xSumatoraiaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eNormal.png"))); // NOI18N
+        xSumatoraiaLabel.setBounds(230, 120, 70, 50);
+        jLayeredPane1.add(xSumatoraiaLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel2.setText("x2");
+        x2label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Normalx2.png"))); // NOI18N
+        x2label.setText("jLabel6");
+        x2label.setBounds(60, 160, 60, 60);
+        jLayeredPane1.add(x2label, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        X2.setText("1");
+        X1LABEL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Normalx1.png"))); // NOI18N
+        X1LABEL.setBounds(60, 60, 60, 50);
+        jLayeredPane1.add(X1LABEL, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel3.setText("w1");
+        YR.setBackground(new java.awt.Color(0, 0, 0));
+        YR.setForeground(new java.awt.Color(0, 204, 204));
+        YR.setBorder(null);
+        YR.setBounds(440, 130, 20, 14);
+        jLayeredPane1.add(YR, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel4.setText("w2");
-
-        W1.setText("1.7");
-
-        W2.setText("1.8");
-
-        jLabel5.setText("bias");
-
-        BIAS.setText("2.4");
-
-        jLabel6.setText("u");
-
-        U.setText("0.4");
-
-        jLabel7.setText("YD");
-
-        YD.setText("0");
-
-        Entrenar.setText("Entrenar");
+        Entrenar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boton.png"))); // NOI18N
         Entrenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EntrenarActionPerformed(evt);
             }
         });
+        Entrenar.setBounds(420, 260, 50, 30);
+        jLayeredPane1.add(Entrenar, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jLabel8.setText("YR");
+        YD.setBackground(new java.awt.Color(0, 0, 0));
+        YD.setForeground(new java.awt.Color(0, 204, 204));
+        YD.setText("0");
+        YD.setBounds(440, 215, 20, 20);
+        jLayeredPane1.add(YD, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        U.setBackground(new java.awt.Color(0, 0, 0));
+        U.setForeground(new java.awt.Color(0, 204, 204));
+        U.setText("0.4");
+        U.setBorder(null);
+        U.setBounds(310, 130, 40, 20);
+        jLayeredPane1.add(U, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        BIAS.setBackground(new java.awt.Color(0, 0, 0));
+        BIAS.setForeground(new java.awt.Color(0, 204, 204));
+        BIAS.setText("2.4");
+        BIAS.setBorder(null);
+        BIAS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                BIASFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                BIASFocusLost(evt);
+            }
+        });
+        BIAS.setBounds(240, 230, 40, 20);
+        jLayeredPane1.add(BIAS, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel5.setText("bias");
+        jLabel5.setBounds(180, 260, 19, 14);
+        jLayeredPane1.add(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        W2.setBackground(new java.awt.Color(0, 0, 0));
+        W2.setForeground(new java.awt.Color(0, 204, 204));
+        W2.setText("1.8");
+        W2.setBorder(null);
+        W2.setBounds(190, 80, 40, 20);
+        jLayeredPane1.add(W2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        W1.setBackground(new java.awt.Color(0, 0, 0));
+        W1.setForeground(new java.awt.Color(0, 204, 204));
+        W1.setText("1.7");
+        W1.setBorder(null);
+        W1.setBounds(190, 200, 40, 20);
+        jLayeredPane1.add(W1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel4.setText("w2");
+        jLabel4.setBounds(90, 180, 14, 14);
+        jLayeredPane1.add(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel3.setText("w1");
+        jLabel3.setBounds(90, 60, 14, 14);
+        jLayeredPane1.add(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        X2.setBackground(new java.awt.Color(0, 0, 0));
+        X2.setForeground(new java.awt.Color(0, 204, 204));
+        X2.setText("1");
+        X2.setBorder(null);
+        X2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                X2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                X2FocusLost(evt);
+            }
+        });
+        X2.setBounds(20, 180, 30, 20);
+        jLayeredPane1.add(X2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel2.setText("x2");
+        jLabel2.setBounds(20, 190, 12, 14);
+        jLayeredPane1.add(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        X1.setBackground(new java.awt.Color(0, 0, 0));
+        X1.setForeground(new java.awt.Color(0, 204, 204));
+        X1.setText("0");
+        X1.setBorder(null);
+        X1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                X1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                X1FocusLost(evt);
+            }
+        });
+        X1.setBounds(20, 70, 30, 20);
+        jLayeredPane1.add(X1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        jLabel1.setText("x1");
+        jLabel1.setBounds(30, 60, 12, 14);
+        jLayeredPane1.add(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        fONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/EvaluacionFinal_0000_Flechas.png"))); // NOI18N
+        fONDO.setPreferredSize(new java.awt.Dimension(496, 350));
+        fONDO.setBounds(0, -20, 500, 340);
+        jLayeredPane1.add(fONDO, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(X1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(X2)))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(W1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(W2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(jLabel6))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(U, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                                .addComponent(YR, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(YD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(BIAS, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                        .addComponent(Entrenar)))
-                .addGap(23, 23, 23))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(X1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(X2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(W1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(U, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(W2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(YD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(YR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BIAS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Entrenar))
-                        .addGap(5, 5, 5)))
-                .addContainerGap(25, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
         );
 
         pack();
@@ -207,6 +233,38 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
                                     while(error!=0);
        
     }//GEN-LAST:event_EntrenarActionPerformed
+
+    private void X1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_X1FocusGained
+       X1LABEL.setIcon(hoverx1);
+    }//GEN-LAST:event_X1FocusGained
+
+    private void X1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_X1FocusLost
+      X1LABEL.setIcon(Normalx1);
+    }//GEN-LAST:event_X1FocusLost
+
+    private void X2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_X2FocusGained
+      x2label.setIcon(hoverx2);
+    }//GEN-LAST:event_X2FocusGained
+
+    private void X2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_X2FocusLost
+      x2label.setIcon(Normalx2);
+    }//GEN-LAST:event_X2FocusLost
+
+    private void BIASFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BIASFocusGained
+      xSumatoraiaLabel.setIcon(eHover);
+    }//GEN-LAST:event_BIASFocusGained
+
+    private void BIASFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BIASFocusLost
+      xSumatoraiaLabel.setIcon(eNormal);
+    }//GEN-LAST:event_BIASFocusLost
+
+    private void funcionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_funcionMouseEntered
+        funcion.setIcon(fHover);
+    }//GEN-LAST:event_funcionMouseEntered
+
+    private void funcionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_funcionMouseExited
+        funcion.setIcon(fNoramal);
+    }//GEN-LAST:event_funcionMouseExited
 
     
 
@@ -362,16 +420,19 @@ double pesoSinapticoW1,pesoSinapticoW2,bias,u,incrementoPesoSinapticoW1,incremen
     private javax.swing.JTextField W1;
     private javax.swing.JTextField W2;
     private javax.swing.JTextField X1;
+    private javax.swing.JLabel X1LABEL;
     private javax.swing.JTextField X2;
     private javax.swing.JTextField YD;
     private javax.swing.JTextField YR;
+    private javax.swing.JLabel fONDO;
+    private javax.swing.JLabel funcion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel x2label;
+    private javax.swing.JLabel xSumatoraiaLabel;
     // End of variables declaration//GEN-END:variables
 }
